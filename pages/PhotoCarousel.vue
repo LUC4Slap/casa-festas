@@ -6,11 +6,11 @@
         Conheça nossos espaços elegantes e versáteis para o seu evento especial
       </p>
     </div>
-    
+
     <div class="carousel-container">
       <div class="carousel-wrapper" ref="carouselWrapper">
-        <div 
-          class="carousel-track" 
+        <div
+          class="carousel-track"
           :style="{ transform: `translateX(-${currentSlide * 100}%)` }"
         >
           <div
@@ -31,7 +31,7 @@
           </div>
         </div>
       </div>
-      
+
       <!-- Controles de navegação -->
       <UButton
         icon="i-heroicons-chevron-left"
@@ -41,7 +41,7 @@
         @click="previousSlide"
         :disabled="currentSlide === 0"
       />
-      
+
       <UButton
         icon="i-heroicons-chevron-right"
         variant="solid"
@@ -50,7 +50,7 @@
         @click="nextSlide"
         :disabled="currentSlide === images.length - 1"
       />
-      
+
       <!-- Indicadores -->
       <div class="carousel-indicators">
         <button
@@ -61,7 +61,7 @@
         />
       </div>
     </div>
-    
+
     <!-- Thumbnails -->
     <div class="thumbnails-container">
       <div class="thumbnails-grid">
@@ -91,31 +91,31 @@ const autoplayInterval = ref(null)
 
 const images = [
   {
-    src: '/festa1.jpg',
+    src: 'https://picsum.photos/200/300',
     alt: 'Salão principal decorado para casamento',
     title: 'Salão Principal',
     description: 'Espaço amplo e elegante para cerimônias e recepções'
   },
   {
-    src: '/festa2.jpg',
+    src: 'https://picsum.photos/200/300',
     alt: 'Mesa decorada para evento especial',
     title: 'Decoração Personalizada',
     description: 'Ambientação única para cada tipo de celebração'
   },
   {
-    src: '/festa3.jpg',
+    src: 'https://picsum.photos/200/300',
     alt: 'Área gourmet moderna',
     title: 'Área Gourmet',
     description: 'Espaço moderno para eventos mais intimistas'
   },
   {
-    src: '/festa4.jpg',
+    src: 'https://picsum.photos/200/300',
     alt: 'Salão com vista panorâmica',
     title: 'Vista Panorâmica',
     description: 'Ambiente sofisticado com vista deslumbrante'
   },
   {
-    src: '/festa5.jpg',
+    src: 'https://picsum.photos/200/300',
     alt: 'Área externa para eventos',
     title: 'Área Externa',
     description: 'Jardim e terraço para eventos ao ar livre'
@@ -326,32 +326,32 @@ onUnmounted(() => {
   .carousel-wrapper {
     height: 300px;
   }
-  
+
   .carousel-btn {
     width: 40px;
     height: 40px;
   }
-  
+
   .carousel-btn-prev {
     left: 0.5rem;
   }
-  
+
   .carousel-btn-next {
     right: 0.5rem;
   }
-  
+
   .image-overlay {
     padding: 1rem;
   }
-  
+
   .overlay-title {
     font-size: 1.25rem;
   }
-  
+
   .overlay-description {
     font-size: 0.875rem;
   }
-  
+
   .thumbnails-grid {
     grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
     gap: 0.5rem;
@@ -362,7 +362,7 @@ onUnmounted(() => {
   .carousel-wrapper {
     height: 250px;
   }
-  
+
   .gallery-container {
     padding: 1rem 0.5rem;
   }

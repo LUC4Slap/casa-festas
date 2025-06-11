@@ -1,28 +1,28 @@
 <template>
   <div class="calendar-container">
     <div class="calendar-header">
-      <UButton 
-        icon="i-heroicons-chevron-left" 
-        variant="ghost" 
+      <UButton
+        icon="i-heroicons-chevron-left"
+        variant="ghost"
         @click="previousMonth"
       />
       <h3 class="text-xl font-semibold">
         {{ currentMonthYear }}
       </h3>
-      <UButton 
-        icon="i-heroicons-chevron-right" 
-        variant="ghost" 
+      <UButton
+        icon="i-heroicons-chevron-right"
+        variant="ghost"
         @click="nextMonth"
       />
     </div>
-    
+
     <div class="calendar-grid">
       <div class="weekdays">
         <div v-for="day in weekdays" :key="day" class="weekday">
           {{ day }}
         </div>
       </div>
-      
+
       <div class="days-grid">
         <div
           v-for="day in calendarDays"
@@ -40,7 +40,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="legend">
       <div class="legend-item">
         <div class="legend-color available"></div>
@@ -67,24 +67,24 @@ const availabilityData = ref({})
 const weekdays = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb']
 
 const currentMonthYear = computed(() => {
-  return currentDate.value.toLocaleDateString('pt-BR', { 
-    month: 'long', 
-    year: 'numeric' 
+  return currentDate.value.toLocaleDateString('pt-BR', {
+    month: 'long',
+    year: 'numeric'
   })
 })
 
 const calendarDays = computed(() => {
   const year = currentDate.value.getFullYear()
   const month = currentDate.value.getMonth()
-  
+
   const firstDay = new Date(year, month, 1)
   const lastDay = new Date(year, month + 1, 0)
   const startDate = new Date(firstDay)
   startDate.setDate(startDate.getDate() - firstDay.getDay())
-  
+
   const days = []
   const currentDateObj = new Date(startDate)
-  
+
   for (let i = 0; i < 42; i++) {
     const dateKey = currentDateObj.toISOString().split('T')[0]
     days.push({
@@ -98,7 +98,7 @@ const calendarDays = computed(() => {
     })
     currentDateObj.setDate(currentDateObj.getDate() + 1)
   }
-  
+
   return days
 })
 
@@ -112,7 +112,7 @@ const nextMonth = () => {
 
 const toggleDayAvailability = (day) => {
   if (!day.isCurrentMonth) return
-  
+
   const dateKey = day.date
   if (availabilityData.value[dateKey] === undefined) {
     availabilityData.value[dateKey] = true
@@ -125,7 +125,7 @@ const toggleDayAvailability = (day) => {
 
 const getDayClasses = (day) => {
   const classes = ['calendar-day']
-  
+
   if (!day.isCurrentMonth) {
     classes.push('other-month')
   } else {
@@ -139,7 +139,7 @@ const getDayClasses = (day) => {
       classes.push('unavailable')
     }
   }
-  
+
   return classes
 }
 
@@ -149,7 +149,7 @@ onMounted(() => {
   // Por enquanto, vamos definir alguns dias como exemplo
   const today = new Date()
   const nextWeek = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000)
-  
+
   availabilityData.value[today.toISOString().split('T')[0]] = true
   availabilityData.value[nextWeek.toISOString().split('T')[0]] = false
 })
@@ -305,11 +305,11 @@ onMounted(() => {
   .calendar-container {
     padding: 1rem;
   }
-  
+
   .calendar-day {
     min-height: 50px;
   }
-  
+
   .legend {
     flex-direction: column;
     align-items: center;

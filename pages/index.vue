@@ -14,14 +14,14 @@
             <a href="#contato" class="text-gray-600 hover:text-blue-600 transition-colors">Contato</a>
             <UButton color="blue" variant="solid">Fazer Reserva</UButton>
           </div>
-          <UButton 
-            icon="i-heroicons-bars-3" 
-            variant="ghost" 
+          <UButton
+            icon="i-heroicons-bars-3"
+            variant="ghost"
             class="md:hidden"
             @click="toggleMobileMenu"
           />
         </nav>
-        
+
         <!-- Mobile Menu -->
         <div v-if="showMobileMenu" class="md:hidden mt-4 pb-4 border-t border-gray-200">
           <div class="flex flex-col space-y-3 pt-4">
@@ -68,7 +68,7 @@
             Oferecemos tudo que você precisa para tornar seu evento único e memorável
           </p>
         </div>
-        
+
         <div class="grid md:grid-cols-3 gap-8">
           <div class="text-center p-6">
             <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -77,7 +77,7 @@
             <h4 class="text-xl font-semibold mb-2">Espaços Versáteis</h4>
             <p class="text-gray-600">Ambientes adaptáveis para diferentes tipos de eventos e celebrações</p>
           </div>
-          
+
           <div class="text-center p-6">
             <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <UIcon name="i-heroicons-sparkles" class="w-8 h-8 text-green-600" />
@@ -85,7 +85,7 @@
             <h4 class="text-xl font-semibold mb-2">Decoração Personalizada</h4>
             <p class="text-gray-600">Ambientação única e personalizada para cada tipo de celebração</p>
           </div>
-          
+
           <div class="text-center p-6">
             <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <UIcon name="i-heroicons-users" class="w-8 h-8 text-purple-600" />
@@ -108,13 +108,13 @@
         <div class="text-center mb-12">
           <h3 class="text-3xl font-bold mb-4">Verifique Nossa Disponibilidade</h3>
           <p class="text-gray-600 max-w-2xl mx-auto">
-            Clique nas datas para marcar como disponível (verde) ou indisponível (vermelho). 
+            Clique nas datas para marcar como disponível (verde) ou indisponível (vermelho).
             Use o calendário para planejar seu evento.
           </p>
         </div>
-        
+
         <AvailabilityCalendar />
-        
+
         <div class="text-center mt-8">
           <UButton size="lg" color="blue" variant="solid">
             <UIcon name="i-heroicons-phone" class="w-5 h-5 mr-2" />
@@ -131,26 +131,26 @@
           <div>
             <h3 class="text-3xl font-bold mb-6">Entre em Contato</h3>
             <p class="text-gray-300 mb-8">
-              Estamos prontos para ajudar você a planejar o evento dos seus sonhos. 
+              Estamos prontos para ajudar você a planejar o evento dos seus sonhos.
               Entre em contato conosco para mais informações e orçamentos.
             </p>
-            
+
             <div class="space-y-4">
               <div class="flex items-center space-x-3">
                 <UIcon name="i-heroicons-phone" class="w-5 h-5 text-blue-400" />
-                <span>(11) 99999-9999</span>
+                <span>(67) 99221-0409</span>
               </div>
               <div class="flex items-center space-x-3">
                 <UIcon name="i-heroicons-envelope" class="w-5 h-5 text-blue-400" />
-                <span>contato@casadefestas.com.br</span>
+                <span>erica2008rs@hotmail.com</span>
               </div>
               <div class="flex items-center space-x-3">
                 <UIcon name="i-heroicons-map-pin" class="w-5 h-5 text-blue-400" />
-                <span>Rua das Festas, 123 - São Paulo, SP</span>
+                <span>Rua Alfredo Borma, 951 - Campo Grande, MS</span>
               </div>
             </div>
           </div>
-          
+
           <div class="bg-gray-800 p-8 rounded-lg">
             <h4 class="text-xl font-semibold mb-6">Solicite um Orçamento</h4>
             <form class="space-y-4">
@@ -183,9 +183,12 @@
 </template>
 
 <script setup>
+import AvailabilityCalendar from './AvailabilityCalendar.vue'
+import PhotoCarousel from './PhotoCarousel.vue'
 import { ref } from 'vue'
 
 const showMobileMenu = ref(false)
+const toast = useToast()
 
 const toggleMobileMenu = () => {
   showMobileMenu.value = !showMobileMenu.value
@@ -198,6 +201,7 @@ const scrollToSection = (sectionId) => {
   }
   showMobileMenu.value = false
 }
+
 
 // Meta tags para SEO
 useHead({
@@ -250,11 +254,11 @@ useHead({
   .hero-section {
     padding: 4rem 0;
   }
-  
+
   .hero-section h2 {
     font-size: 2.5rem;
   }
-  
+
   .hero-section p {
     font-size: 1.125rem;
   }
