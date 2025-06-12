@@ -14,12 +14,7 @@
             <a href="#contato" class="text-gray-600 hover:text-blue-600 transition-colors">Contato</a>
             <UButton color="blue" variant="solid">Fazer Reserva</UButton>
           </div>
-          <UButton
-            icon="i-heroicons-bars-3"
-            variant="ghost"
-            class="md:hidden"
-            @click="toggleMobileMenu"
-          />
+          <UButton icon="i-heroicons-bars-3" variant="ghost" class="md:hidden" @click="toggleMobileMenu" />
         </nav>
 
         <!-- Mobile Menu -->
@@ -70,28 +65,13 @@
         </div>
 
         <div class="grid md:grid-cols-3 gap-8">
-          <div class="text-center p-6">
-            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <UIcon name="i-heroicons-home-modern" class="w-8 h-8 text-blue-600" />
-            </div>
-            <h4 class="text-xl font-semibold mb-2">Espaços Versáteis</h4>
-            <p class="text-gray-600">Ambientes adaptáveis para diferentes tipos de eventos e celebrações</p>
-          </div>
 
-          <div class="text-center p-6">
-            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <UIcon name="i-heroicons-sparkles" class="w-8 h-8 text-green-600" />
+          <div v-for="detalhe in detalhesGrid" :key="detalhe.icon" class="text-center p-6">
+            <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" :class="detalhe.colorClass">
+              <UIcon :name="detalhe.icon" class="w-8 h-8 text-blue-600" />
             </div>
-            <h4 class="text-xl font-semibold mb-2">Decoração Personalizada</h4>
-            <p class="text-gray-600">Ambientação única e personalizada para cada tipo de celebração</p>
-          </div>
-
-          <div class="text-center p-6">
-            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <UIcon name="i-heroicons-users" class="w-8 h-8 text-purple-600" />
-            </div>
-            <h4 class="text-xl font-semibold mb-2">Atendimento Completo</h4>
-            <p class="text-gray-600">Equipe especializada para cuidar de todos os detalhes do seu evento</p>
+            <h4 class="text-xl font-semibold mb-2">{{ detalhe.titulo }}</h4>
+            <p class="text-gray-600">{{ detalhe.description }}</p>
           </div>
         </div>
       </div>
@@ -188,7 +168,27 @@ import PhotoCarousel from './PhotoCarousel.vue'
 import { ref } from 'vue'
 
 const showMobileMenu = ref(false)
-const toast = useToast()
+const detalhesGrid = ref([
+  {
+    icon: 'i-heroicons-home-modern',
+    title: 'Espaços Versáteis',
+    description: 'Ambientes adaptáveis para diferentes tipos de eventos e celebrações',
+    colorClass: 'bg-blue-100'
+  },
+  {
+    icon: 'i-heroicons-sparkles',
+    title: 'Decoração Personalizada',
+    description: 'Ambientação única e personalizada para cada tipo de celebração',
+    colorClass: 'bg-green-100'
+  },
+  {
+    icon: 'i-heroicons-users',
+    title: 'Atendimento Completo',
+    description: 'Equipe especializada para cuidar de todos os detalhes do seu evento',
+    colorClass: 'bg-purple-100'
+  },
+])
+
 
 const toggleMobileMenu = () => {
   showMobileMenu.value = !showMobileMenu.value
